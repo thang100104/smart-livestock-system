@@ -1,0 +1,40 @@
+# Smart Livestock System v2
+
+## Chạy bằng Docker
+
+```bash
+docker compose down -v
+docker compose up --build
+```
+
+- Frontend: http://localhost:3000
+- Backend Swagger: http://localhost:8000/docs
+- Health: http://localhost:8000/api/health
+
+## Demo
+
+- admin / admin123
+- nhanvientrai1 / staff123
+- kythuatvien1 / tech123
+- xuatban1 / sale123
+
+## Modules
+
+Dashboard, tài khoản/JWT/RBAC, vật nuôi CRUD, chuồng CRUD, chăm sóc, vaccine, tăng trưởng, thức ăn, định mức, xuất bán, báo cáo, AI summary/analyze/history.
+
+AI hiện có chế độ fallback an toàn để hệ thống chạy không cần API key. Có thể thay thế hàm build_ai_answer bằng provider AI thật khi triển khai.
+
+## Kết nối OpenAI / ChatGPT
+
+Giao diện Trợ lý AI đã hỗ trợ gọi OpenAI Responses API ở backend. API key không được đưa vào frontend.
+
+1. Tạo file `.env` cạnh `docker-compose.yml`.
+2. Thêm:
+   `OPENAI_API_KEY=...`
+   `OPENAI_MODEL=gpt-5`
+3. Chạy lại:
+   `docker compose up --build`
+
+Nếu không có `OPENAI_API_KEY`, hệ thống tự động dùng chế độ `fallback` để demo và vẫn hoạt động.
+
+Tham khảo OpenAI Responses API: https://platform.openai.com/docs/quickstart/make-your-first-api-request
